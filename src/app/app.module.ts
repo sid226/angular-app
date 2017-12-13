@@ -10,6 +10,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { DataService } from './data-service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
     EditPageComponent, FilterPipe
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule,
+    BrowserModule, FormsModule, ReactiveFormsModule,OrderModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
