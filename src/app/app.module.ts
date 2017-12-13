@@ -7,6 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { DataService } from './data-service.service';
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'edit/:id',      component: EditPageComponent },
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     })
 
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

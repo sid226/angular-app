@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService  } from '../data-service.service';
 
 @Component({
   selector: 'home-page-component',
@@ -11,39 +12,16 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     //throw new Error("Method not implemented.");
+
   }
 
-
-
-  constructor() {
-
-    this.pushData(111,"John", "Dsouza", "test1@test.com", "12-12-2017");
-    this.pushData(112,"Mary", "Vaz", "test2@test.com", "13-11-2017");
-    this.pushData(113,"Ramesh", "Naik", "test3@test.com", "24-8-2017");
+  constructor(private dataService: DataService ) {
+    this.users= this.dataService.users;
   }
-
-  pushData(id,fname, lname, email, join_date) {
-
-    let temp = {
-      id:id,
-      fname: fname,
-      lname: lname,
-      email: email,
-      date: join_date
-    }
-
-    this.users.push(temp);
-  }
-
 
   public deleteUser(item: string,id): void {
-    console.log("Hello world!"+id);
+    this.dataService.deleteUser(id);
 
-    var index = this.users.findIndex(d => d.id === id);
-    if (index > -1) {
-      this.users.splice(index, 1);
-    }
-    // ... save user email
   }
 
   public handleRefusalDelete(dismissMethod: string): void {
