@@ -32,11 +32,12 @@
               type="question"
               [showCancelButton]="true"
               [focusCancel]="true"
-              (confirm)="deleteUser($event)"
+              (confirm)="deleteUser($event,item.id)"
               (cancel)="handleRefusalDelete($event)">
             </swal>
 
-              <button routerLink="/edit" type="button"  class="btn btn-outline-primary">Edit</button>
+              <button routerLink="/edit/item.id" type="button"  class="btn btn-outline-primary">Edit</button>
+
              <button  type="button"  class="btn btn-outline-danger" [swal]="deleteSwal" >
              Delete
             </button>

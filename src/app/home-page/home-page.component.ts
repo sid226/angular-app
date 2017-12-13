@@ -36,8 +36,13 @@ export class HomePageComponent implements OnInit {
   }
 
 
-  public deleteUser(item: string): void {
-    console.log("Hello world!"+item);
+  public deleteUser(item: string,id): void {
+    console.log("Hello world!"+id);
+
+    var index = this.users.findIndex(d => d.id === id);
+    if (index > -1) {
+      this.users.splice(index, 1);
+    }
     // ... save user email
   }
 
