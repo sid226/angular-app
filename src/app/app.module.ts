@@ -8,10 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { DataService } from './data-service.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'edit/:id',      component: EditPageComponent },
-   { path: '',
+  { path: 'edit/:id', component: EditPageComponent },
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -25,20 +29,20 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    EditPageComponent
+    EditPageComponent, FilterPipe
   ],
   imports: [
-    BrowserModule,
-      RouterModule.forRoot(
-        appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
-      ),
-      // other imports here
-       SweetAlert2Module.forRoot({
-        buttonsStyling: true,
-        customClass: 'modal-content',
-        confirmButtonClass: 'btn btn-primary',
-        cancelButtonClass: 'btn '
+    BrowserModule, FormsModule, ReactiveFormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    // other imports here
+    SweetAlert2Module.forRoot({
+      buttonsStyling: true,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn '
     })
 
   ],

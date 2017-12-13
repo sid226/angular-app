@@ -1,48 +1,58 @@
+<div class="container">
+  <div class="row">
 
-<form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-  <br>
-  <table class="table table-striped">
-      <thead class="thead-inverse">
-        <tr>
-          <th>#</th>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Joining Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of users; let i = index">
-          <th scope="row">{{i}}</th>
-          <td>{{item.id}}</td>
-          <td>{{item.fname}}</td>
-          <td>{{item.lname}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.date}}</td>
-          <td>
-              <swal
-              #deleteSwal
-              title="Are you sure?"
-              text=""
-              type="question"
-              [showCancelButton]="true"
-              [focusCancel]="true"
-              (confirm)="deleteUser($event,item.id)"
-              (cancel)="handleRefusalDelete($event)">
-            </swal>
+    <div class="col-1">
 
-              <button routerLink="/edit/item.id" type="button"  class="btn btn-outline-primary">Edit</button>
+    </div>
+    <div class="col-10">
 
-             <button  type="button"  class="btn btn-outline-danger" [swal]="deleteSwal" >
-             Delete
-            </button>
-          </td>
-        </tr>
+      <div class="row">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="text" name ="searchText" [(ngModel)]="searchText"  placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+       </div>
+       <br>
 
-      </tbody>
-    </table>
+      <div class="row">
+        <table class="table table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <th>#</th>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Joining Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of users | filter : searchText; let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{item.id}}</td>
+              <td>{{item.fname}}</td>
+              <td>{{item.lname}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.date}}</td>
+              <td>
+                <swal #deleteSwal title="Are you sure?" text="" type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteUser($event,item.id)"
+                  (cancel)="handleRefusalDelete($event)">
+                </swal>
+
+                <button routerLink="/edit/{{item.id}}" type="button" class="btn btn-outline-primary">Edit</button>
+
+                <button type="button" class="btn btn-outline-danger" [swal]="deleteSwal">
+                  Delete
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-1">
+
+    </div>

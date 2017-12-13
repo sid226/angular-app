@@ -1,30 +1,47 @@
-<form>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-2">
+
+          </div>
+      <div class="col-8">
+
+
+
+<form [formGroup]="myForm" (ngSubmit)="submitForm(myForm.value)" >
+
     <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">First name</label>
         <div class="col-10">
-          <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+          <input  class="form-control" type="text" value="{{currentUser.fname}}" id="example-text-input"  [formControl]="myForm.controls['fname']" >
         </div>
       </div>
       <div class="form-group row">
           <label for="example-text-input" class="col-2 col-form-label">Last name</label>
           <div class="col-10">
-            <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+            <input name="lname" class="form-control" type="text" value="{{currentUser.lname}}" id="example-text-input"   [formControl]="myForm.controls['lname']">
           </div>
         </div>
 
       <div class="form-group row">
         <label for="example-email-input" class="col-2 col-form-label">Email</label>
         <div class="col-10">
-          <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+          <input name="email" class="form-control" type="email" value="{{currentUser.email}}" id="example-email-input"   [formControl]="myForm.controls['email']">
         </div>
       </div>
 
        <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Joining date</label>
         <div class="col-10">
-          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+          <input name="date" class="form-control" type="date" value="{{currentUser.date}}" id="example-date-input"  [formControl]="myForm.controls['date']">
         </div>
       </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button  [swal]="['yay!', 'Form submitted successfully', 'success']"  type="submit"  [disabled]="!myForm.valid"  class="btn btn-primary">Submit</button>
   </form>
+
+</div>
+<div class="col-2">
+
+              </div>

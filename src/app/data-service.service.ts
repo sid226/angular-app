@@ -7,9 +7,9 @@ export class DataService {
 
     constructor() {
 
-      this.pushData(111,"John", "Dsouza", "test1@test.com", "12-12-2017");
-      this.pushData(112,"Mary", "Vaz", "test2@test.com", "13-11-2017");
-      this.pushData(113,"Ramesh", "Naik", "test3@test.com", "24-8-2017");
+      this.pushData(111,"John", "Dsouza", "test1@test.com", "2011-08-19");
+      this.pushData(112,"Mary", "Vaz", "test2@test.com", "2017-05-18");
+      this.pushData(113,"Ramesh", "Naik", "test3@test.com", "2016-06-16");
     }
 
     public pushData(id,fname, lname, email, join_date) {
