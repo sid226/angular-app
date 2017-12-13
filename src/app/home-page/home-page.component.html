@@ -17,23 +17,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <tr *ngFor="let item of users; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>{{item.id}}</td>
+          <td>{{item.fname}}</td>
+          <td>{{item.lname}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.date}}</td>
+          <td>
+              <swal
+              #deleteSwal
+              title="Are you sure?"
+              text=""
+              type="question"
+              [showCancelButton]="true"
+              [focusCancel]="true"
+              (confirm)="deleteUser($event)"
+              (cancel)="handleRefusalDelete($event)">
+            </swal>
+
+              <button routerLink="/edit" type="button"  class="btn btn-outline-primary">Edit</button>
+             <button  type="button"  class="btn btn-outline-danger" [swal]="deleteSwal" >
+             Delete
+            </button>
+          </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+
       </tbody>
     </table>
