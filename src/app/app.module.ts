@@ -18,6 +18,8 @@ import { ExcelService } from './excel.service';
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'edit/:id', component: EditPageComponent },
+  { path: 'new', component: EditPageComponent },
+  { path: 'about', component: NewPageComponent },
   {
     path: '',
     redirectTo: '/home',

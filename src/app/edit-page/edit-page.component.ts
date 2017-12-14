@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class EditPageComponent implements OnInit {
   myForm: FormGroup;
-
+  pageName:string;
   users: User[] = [];
   currentUser: User;
   private sub: any;
@@ -18,10 +18,16 @@ export class EditPageComponent implements OnInit {
   ngOnInit(): void {
     //throw new Error("Method not implemented.");
     this.sub = this.route.params.subscribe(params => {
+      if( params['id'] )
+      {
+        this.pageName="EDIT USER";
       this.id = +params['id']; // (+) converts string 'id' to a number
       // In a real app: dispatch action to load the details here.
       var index = this.users.findIndex(d => d.id === this.id);
       this.currentUser = this.users[index];
+      }
+      else
+      {  this.pageName="NEW USER";}
 
     });
 
@@ -30,7 +36,13 @@ export class EditPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private dataService: DataService, fb: FormBuilder) {
     this.users = this.dataService.users;
-
+    this.currentUser={
+      id:0,
+      fname: "",
+      lname: "",
+      email: "",
+      date: ""
+    };
     this.myForm = fb.group({
       'fname' : [null, Validators.required],
       'lname': [null, Validators.required],
