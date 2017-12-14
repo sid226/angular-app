@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
   users: User[] = [];
   order: string = 'name';
   reverse: boolean = false;
+  searchText:string;
   ngOnInit(): void {
     //throw new Error("Method not implemented.");
 
