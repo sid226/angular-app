@@ -5,7 +5,7 @@
 
     </div>
     <div class="col-10">
-
+<br>
       <div class="row">
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="text" name ="searchText" [(ngModel)]="searchText"  placeholder="Search">
@@ -19,11 +19,11 @@
           <thead class="thead-inverse">
             <tr>
               <th>#</th>
-              <th (click)="setOrder('id')">ID  </th>
-              <th (click)="setOrder('fname')">First Name</th>
-              <th (click)="setOrder('lname')">Last Name</th>
-              <th (click)="setOrder('email')">Email</th>
-              <th (click)="setOrder('date')">Joining Date</th>
+              <th (click)="setOrder('id')">ID  <i class="fa fa-sort leftPadding" aria-hidden="true"></i> </th>
+              <th (click)="setOrder('fname')">First Name <i class="fa fa-sort leftPadding" aria-hidden="true"></i></th>
+              <th (click)="setOrder('lname')">Last Name <i class="fa fa-sort leftPadding" aria-hidden="true"></i></th>
+              <th (click)="setOrder('email')">Email <i class="fa fa-sort leftPadding" aria-hidden="true"></i></th>
+              <th (click)="setOrder('date')">Joining Date<i class="fa fa-sort leftPadding" aria-hidden="true"></i></th>
               <th>Action</th>
             </tr>
           </thead>
@@ -50,7 +50,23 @@
 
           </tbody>
         </table>
+        <br>
+
+
+
       </div>
+      <div class="row justify-content-between">
+          <div class="col-10">
+              <button type="button" class="btn btn-primary right" >
+                  Add New User
+                </button>
+          </div>
+          <div class="col-2">
+              <button type="button" class="btn btn-success" (click)="exportData()" >
+                  Export
+                </button>
+          </div>
+        </div>
     </div>
 
     <div class="col-1">

@@ -11,6 +11,9 @@ import { DataService } from './data-service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NewPageComponent } from './new-page/new-page.component';
+import { ExcelService } from './excel.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -30,10 +33,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    EditPageComponent, FilterPipe
+    EditPageComponent, FilterPipe, NewPageComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule,OrderModule,
+    BrowserModule, FormsModule, ReactiveFormsModule,OrderModule,AngularFontAwesomeModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -47,7 +50,7 @@ const appRoutes: Routes = [
     })
 
   ],
-  providers: [DataService],
+  providers: [DataService,ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

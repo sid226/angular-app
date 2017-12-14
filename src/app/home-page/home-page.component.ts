@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService  } from '../data-service.service';
+import { DataService } from '../data-service.service';
+import { ExcelService } from '../excel.service';
 
 @Component({
   selector: 'home-page-component',
@@ -8,32 +9,32 @@ import { DataService  } from '../data-service.service';
 })
 export class HomePageComponent implements OnInit {
 
-  users: User[]= [];
+  users: User[] = [];
   order: string = 'name';
-  reverse:boolean=false;
+  reverse: boolean = false;
   ngOnInit(): void {
     //throw new Error("Method not implemented.");
 
   }
   public icon = 'close';
 
-  public changeIcon(newIcon: string ){
-      this.icon = newIcon ;
+  public changeIcon(newIcon: string) {
+    this.icon = newIcon;
   }
 
-  constructor(private dataService: DataService ) {
-    this.users= this.dataService.users;
-   }
-   setOrder(order:string){
-    this.order=order;
-    if(this.reverse == false)
-    this.reverse=true;
+  constructor(private dataService: DataService,private excelService:ExcelService) {
+    this.users = this.dataService.users;
+  }
+  setOrder(order: string) {
+    this.order = order;
+    if (this.reverse == false)
+      this.reverse = true;
     else
-    this.reverse=false;
+      this.reverse = false;
 
-   }
+  }
 
-  public deleteUser(item: string,id): void {
+  public deleteUser(item: string, id): void {
     this.dataService.deleteUser(id);
 
   }
@@ -43,7 +44,9 @@ export class HomePageComponent implements OnInit {
     // ... do something
   }
 
-
+  public exportData() {
+    this.excelService.exportAsExcelFile(this.users,"ExportUsers");
+  }
 
 }
 

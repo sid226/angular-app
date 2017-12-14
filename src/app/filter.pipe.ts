@@ -8,7 +8,10 @@ export class FilterPipe implements PipeTransform {
     if(!searchText) return items;
 searchText = searchText.toLowerCase();
 return items.filter( it => {
-      return it.fname.toLowerCase().includes(searchText) | it.lname.toLowerCase().includes(searchText) | it.email.toLowerCase().includes(searchText) | it.date.toLowerCase().includes(searchText)| (it.id == (searchText) )   ;
+  let temp:any= searchText;
+  let temp2= ""+it.id
+
+      return it.fname.toLowerCase().includes(searchText) | it.lname.toLowerCase().includes(searchText) | it.email.toLowerCase().includes(searchText) | it.date.toLowerCase().includes(searchText)|  temp.includes(temp2);
     });
    }
 }
